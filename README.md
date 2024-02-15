@@ -1,4 +1,4 @@
-This is the First Part of the Ramp Up CHallenge
+This is the First Part of the Ramp Up Challenge
 
 Made by Juan Pablo Buitrago Diaz
 
