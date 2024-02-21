@@ -25,7 +25,7 @@ const pool = new Pool({
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
-  port: process.env.PGPORT || 5432,
+  port: process.env.PGPORT,
 });
 
 let sessions = {};
@@ -441,7 +441,7 @@ ${userInput}
     const response = await fetch("https://api.ai21.com/studio/v1/j2-mid/complete", {
       method: "POST",
       headers: {
-        "Content-Type": "serverlication/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({

@@ -3,37 +3,37 @@ services:
     build: ./tunefy-main/frontend
     ports:
       - 80:3000
-    depends_on:
-      - backend
-    environment:
-      REACT_APP_BACKEND_URL: http://192.168.33.10:3001
+    #depends_on:
+  #    - backend
     networks:
       - febe
+    env_file:
+      - .env
+    
       
   backend:
     build: ./tunefy-main/backend
     ports:
       - 3001:3001
-    depends_on:
-      - database
-    environment:
-      DB_URL: "postgres://admin:123@database:5432/database"
+  #  depends_on:
+   #   - database
     networks:
       - febe
       - bedb
+    env_file:
+      - .env
+
 
   database:
     build: ./tunefy-main/database
     ports:
       - 5432:5432
-    environment:
-      POSTGRES_DB: database
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: 123
-    volumes:
-      - ./database/scripts:/docker-entrypoint-initdb.d
     networks:
       - bedb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
 
 networks:
   febe:
