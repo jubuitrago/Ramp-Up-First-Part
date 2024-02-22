@@ -3,25 +3,21 @@ services:
     build: ./tunefy-main/frontend
     ports:
       - 80:3000
-    #depends_on:
-  #    - backend
     networks:
       - febe
     env_file:
-      - .env
+      - ./tunefy-main/frontend/.env
     
       
   backend:
     build: ./tunefy-main/backend
     ports:
       - 3001:3001
-  #  depends_on:
-   #   - database
     networks:
       - febe
       - bedb
     env_file:
-      - .env
+      - ./tunefy-main/backend/.env
 
 
   database:
@@ -30,10 +26,9 @@ services:
       - 5432:5432
     networks:
       - bedb
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-
+    env_file:
+      - ./tunefy-main/database/.env
+      
 
 networks:
   febe:
